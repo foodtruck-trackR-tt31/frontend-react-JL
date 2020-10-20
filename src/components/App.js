@@ -25,6 +25,7 @@ const initSignupErrors = {
 }
   
 const initialUsers = []
+const initDisabled = true;
 
 
 
@@ -33,6 +34,7 @@ function App() {
   const [signupValues, setSignupValues] = useState(initSignupValues);
   const [users, setUsers] = useState(initialUsers);
   const [signupErrors, setSignupErrors] = useState(initSignupErrors);
+  const [disabled, setDisabled] = useState(initDisabled);
 
   //EVENT HANDLERS - Passed down to Signup
 
@@ -71,13 +73,25 @@ function App() {
     //Post to API Here as well - once we get fetch working. 
   }
 
+  useEffect(() => {
+    schema.isValid(signupValues).then(valid => {
+      setDisabled(!valid)
+    })
+  }, [signupValues]);
+
   return (
     <Router>
       <div className="App">
         <Nav />
         <Switch>
           <Route path="/register">
-            <Signup values={signupValues} change={trackChange} submit={formSubmit} errors={signupErrors}/>
+            <Signup 
+              values={signupValues} 
+              change={trackChange} 
+              submit={formSubmit} 
+              errors={signupErrors} 
+              disabled={disabled}
+            />
           </Route>
           <Route path="/login">
             <Login />

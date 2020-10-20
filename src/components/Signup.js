@@ -5,7 +5,7 @@ import {Button} from '@material-ui/core'
 
 const Signup = (props) => {
 
-    const {values, change, submit, errors} = props
+    const {values, change, submit, errors, disabled} = props
 
     const onChange = (evt) => {
         const {name, value} = evt.target;
@@ -60,7 +60,7 @@ const Signup = (props) => {
                         </select>
                     </label>
                 </div>
-                <Button onClick={onSubmit}>Submit</Button>
+                <Button disabled={disabled} onClick={onSubmit}>Submit</Button>
             </form>
         </>
     )
