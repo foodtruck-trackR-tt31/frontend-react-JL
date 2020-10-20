@@ -6,7 +6,7 @@ import axios from 'axios';
 NOTE: All state, event handlers, and api calls are handled within the LOGIN component - no props being passed down from APP
 */
 const initialLoginValues = {
-  email: "",
+  username: "",
   password: "",
 }
 
@@ -29,7 +29,7 @@ const Login = (props) => {
     evt.preventDefault();
 
     const creds = {
-      email: loginValues.email,
+      username: loginValues.username,
       password: loginValues.password,
     }
 
@@ -49,12 +49,12 @@ const Login = (props) => {
       <form className="login-form">
         <div className="errors"></div>
         <div className="inputs">
-          <label> Email:{' '}
+          <label> Username:{' '}
             <input 
-              value={loginValues.email}
+              value={loginValues.username}
               onChange={onChange}
-              name="email"
-              type="email"
+              name="username"
+              type="text"
             />
           </label>
           <label>Password:{' '}
