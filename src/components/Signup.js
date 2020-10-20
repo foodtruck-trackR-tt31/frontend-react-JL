@@ -7,6 +7,7 @@ const Signup = (props) => {
 
     const {values, change, submit, errors, disabled} = props
 
+    //Flushing out event handlers 
     const onChange = (evt) => {
         const {name, value} = evt.target;
         change(name, value);
@@ -53,10 +54,10 @@ const Signup = (props) => {
                         />
                     </label>
                     <label>User Type:{' '}
-                        <select onChange={onChange} value={values.userType} name="userType">
+                        <select onChange={onChange} value={values.type} name="type">
                             <option value="">--Select an Option--</option>
-                            <option value="operator">Operator</option>
-                            <option value="diner">Diner</option>
+                            <option value="1">Operator</option>
+                            <option value="2">Diner</option>
                         </select>
                     </label>
                 </div>

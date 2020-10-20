@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button} from '@material-ui/core';
 import axios from 'axios';
+import api from '../resources/testAPI';
 
 /*
 NOTE: All state, event handlers, and api calls are handled within the LOGIN component - no props being passed down from APP
@@ -10,7 +11,7 @@ const initialLoginValues = {
   password: "",
 }
 
-const Login = (props) => {
+const Login = () => {
   const [loginValues, setLoginValues] = useState(initialLoginValues);
 
   //Writing onChange handler to track user inputs and send to state in real time 
@@ -33,7 +34,7 @@ const Login = (props) => {
       password: loginValues.password,
     }
 
-    axios.post("https://reqres.in/api/users", creds) 
+    axios.post(api.login.url, creds) 
       .then((res) => {
         console.log(res.data);
       })
