@@ -10,6 +10,7 @@
   --secondary-grey: #DEDEDE;
   --secondary-creme: #FBEAD2;
   --tertiary-caramel: #FFAD33;
+  --errors-color: #DC143C;
 }
 
 body {
@@ -57,4 +58,8 @@ body {
 
 .nav-logo img{ 
   max-height: 15vh;
+}
+
+.errors{
+  color: var(--errors-color);
 }

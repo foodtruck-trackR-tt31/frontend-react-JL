@@ -5,7 +5,7 @@ import {Button} from '@material-ui/core'
 
 const Signup = (props) => {
 
-    const {values, change, submit} = props
+    const {values, change, submit, errors} = props
 
     const onChange = (evt) => {
         const {name, value} = evt.target;
@@ -21,7 +21,12 @@ const Signup = (props) => {
         <>
             <div>Signup Page:</div>
             <form className='signup-container' >
-                <div className='errors'></div>
+                <div className='errors'>
+                    <div>{errors.username}</div>
+                    <div>{errors.email}</div>
+                    <div>{errors.password}</div>
+                    <div>{errors.userType}</div>
+                </div>
                 <div className='inputs'>
                     <label>Username:{' '}
                         <input 
@@ -48,7 +53,7 @@ const Signup = (props) => {
                         />
                     </label>
                     <label>User Type:{' '}
-                        <select onChange={onChange} value={values.type} name="userType">
+                        <select onChange={onChange} value={values.userType} name="userType">
                             <option value="">--Select an Option--</option>
                             <option value="operator">Operator</option>
                             <option value="diner">Diner</option>

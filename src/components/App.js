@@ -5,6 +5,8 @@ import Signup from './Signup';
 import Nav from './Nav';
 import Login from './Login';
 import api from '../resources/testAPI';
+import schema from '../validation/formSchema';
+import * as yup from 'yup';
 
 ///// SET INITIAL VALUES FOR STATE 
 
@@ -12,7 +14,14 @@ const initSignupValues = {
   username: "",
   email: "",
   password: "",
-  type: "",
+  userType: "",
+}
+
+const initSignupErrors = {
+  username: "",
+  email: "",
+  password: "",
+  userType: "",
 }
   
 const initialUsers = []
@@ -23,11 +32,26 @@ function App() {
 
   const [signupValues, setSignupValues] = useState(initSignupValues);
   const [users, setUsers] = useState(initialUsers);
+  const [signupErrors, setSignupErrors] = useState(initSignupErrors);
 
   //EVENT HANDLERS - Passed down to Signup
 
   const trackChange = (name, value) => {
     //This would be the place to validate some inputs 
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setSignupErrors({
+          ...signupErrors, [name]: "",
+        })
+      })
+      .catch((err) => {
+        setSignupErrors({
+          ...signupErrors,
+          [name]: err.errors[0]
+        })
+      })
     setSignupValues({
       ...signupValues, 
       [name]: value,
@@ -53,7 +77,7 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/register">
-            <Signup values={signupValues} change={trackChange} submit={formSubmit}/>
+            <Signup values={signupValues} change={trackChange} submit={formSubmit} errors={signupErrors}/>
           </Route>
           <Route path="/login">
             <Login />
