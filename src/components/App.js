@@ -6,6 +6,7 @@ import Nav from './Nav';
 import Login from './Login';
 import api from '../resources/testAPI';
 
+///// SET INITIAL VALUES FOR STATE 
 
 const initSignupValues = {
   username: "",
@@ -13,7 +14,7 @@ const initSignupValues = {
   password: "",
   type: "",
 }
-
+  
 const initialUsers = []
 
 
@@ -23,7 +24,7 @@ function App() {
   const [signupValues, setSignupValues] = useState(initSignupValues);
   const [users, setUsers] = useState(initialUsers);
 
-  //EVENT HANDLERS 
+  //EVENT HANDLERS - Passed down to Signup
 
   const trackChange = (name, value) => {
     //This would be the place to validate some inputs 
@@ -40,7 +41,7 @@ function App() {
       password: signupValues.password,
       type: signupValues.type,
     }
-
+    //Take validated info from signupValues - add to users state - and reset signupValues to init. 
     setUsers([newUser, ...users]);
     setSignupValues(initSignupValues);
     //Post to API Here as well - once we get fetch working. 
