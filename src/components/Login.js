@@ -13,6 +13,7 @@ const initialLoginValues = {
 const Login = (props) => {
   const [loginValues, setLoginValues] = useState(initialLoginValues);
 
+  //Writing onChange handler to track user inputs and send to state in real time 
   const onChange = (evt) => {
     const {name, value} = evt.target;
     setLoginValues({
@@ -21,6 +22,9 @@ const Login = (props) => {
     })
   }
 
+  //onSubmit - prevent page reload, post login info to API
+    // - Need to add some form of validation to API call - make sure passwords match to validate? 
+    // - Link to relevant dashboard 
   const onSubmit = (evt) => {
     evt.preventDefault();
 
