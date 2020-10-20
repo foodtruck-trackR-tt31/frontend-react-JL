@@ -5,10 +5,8 @@ import Signup from './Signup';
 import Nav from './Nav';
 import Login from './Login';
 import api from '../resources/testAPI';
-
 import schema from '../validation/formSchema';
 import * as yup from 'yup';
-
 import axios from 'axios';
 
 
@@ -18,14 +16,14 @@ const initSignupValues = {
   username: "",
   email: "",
   password: "",
-  userType: "",
+  role: 0,
 }
 
 const initSignupErrors = {
   username: "",
   email: "",
   password: "",
-  userType: "",
+  role: 0,
 }
   
 const initialUsers = []
@@ -79,14 +77,13 @@ function App() {
   const formSubmit = () => {
     const newUser = {
       username: signupValues.username,
-      email: signupValues.email,
+      // email: signupValues.email,
       password: signupValues.password,
-      type: signupValues.type,
+      role: signupValues.role
     };
     
     postUser(newUser);
     setSignupValues(initSignupValues);
-    //Post to API Here as well - once we get fetch working. 
 
   }
 

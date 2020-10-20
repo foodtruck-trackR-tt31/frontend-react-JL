@@ -26,7 +26,7 @@ const Signup = (props) => {
                     <div>{errors.username}</div>
                     <div>{errors.email}</div>
                     <div>{errors.password}</div>
-                    <div>{errors.userType}</div>
+                    <div>{errors.role}</div>
                 </div>
                 <div className='inputs'>
                     <label>Username:{' '}
@@ -54,10 +54,10 @@ const Signup = (props) => {
                         />
                     </label>
                     <label>User Type:{' '}
-                        <select onChange={onChange} value={values.type} name="type">
+                        <select onChange={onChange} value={values.role} name="role">
                             <option value="">--Select an Option--</option>
-                            <option value="1">Operator</option>
-                            <option value="2">Diner</option>
+                            <option value={1}>Operator</option>
+                            <option value={2}>Diner</option>
                         </select>
                     </label>
                 </div>
